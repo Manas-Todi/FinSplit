@@ -6,7 +6,7 @@ const {isValidObjectId, Types} = require("mongoose");
 exports.getDashboardData = async (req, res) => {
     try {
         const userId = req.user._id;
-        const userObjectId= new Types.ObjectId(string(userId));
+        const userObjectId= new Types.ObjectId(String(userId));
 
         // fetch total income & expense
         const totalIncome = await Income.aggregate([
@@ -24,7 +24,7 @@ exports.getDashboardData = async (req, res) => {
         // get income transactions for last 60 days
         const last60DaysIncomeTransactions = await Income.find({
             userId,
-            date:{ $gte: new Date(Date().now -60 * 24 * 60 * 60 * 1000) },
+            date:{ $gte: new Date(Date.now() -60 * 24 * 60 * 60 * 1000) },
         }).sort({ date: -1 });
 
         // get total income for last 60 days
@@ -39,7 +39,7 @@ exports.getDashboardData = async (req, res) => {
         }).sort({ date: -1 });
 
         // get total expense for last 30 days
-        const expenseLast30Days = last30DaysExpenseTransactions.reduce(
+        const expensesLast30Days = last30DaysExpenseTransactions.reduce(
             (acc, transaction) => acc + transaction.amount, 0
         );
 

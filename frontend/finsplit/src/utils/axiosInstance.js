@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
 });
 
 // request interceptor
-axios.interceptors.request.use(
+axiosInstance.interceptors.request.use(
     (config) => {
         const accessToken = localStorage.getItem('token');
         if (accessToken) {
@@ -25,7 +25,7 @@ axios.interceptors.request.use(
 );
 
 // response interceptor
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
     (response) => {
         return response;
     },
