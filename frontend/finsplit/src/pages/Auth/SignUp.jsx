@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Input from "../../components/Inputs/Input";
 import { validateEmail } from '../../utils/helper';
 import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector';
+import axiosInstance from '../../utils/axiosInstance';
+import { API_PATHS } from '../../utils/apiPaths';
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -39,6 +41,27 @@ const SignUp = () => {
     setError("");
 
     // signup api call
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+        fullName,
+        email,
+        password,
+      });
+
+      const { token, user } = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(user); // Assuming updateUser is a function to set user context
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      if (err.response && err.response.data.message) {
+        setError(err.response.data.message || "Sign up failed. Please try again.");
+      } else {
+        setError("An unexpected error occurred. Please try again later.");
+      }
+    }
   }
 
   return (
