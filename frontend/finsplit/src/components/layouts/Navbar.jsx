@@ -24,4 +24,4 @@ const Navbar = ({activeMenu}) => {
   )
 }
 
-export default Navbar
+export default Navbar 
