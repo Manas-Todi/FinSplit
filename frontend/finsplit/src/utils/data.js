@@ -8,19 +8,19 @@ import {
 export const SIDE_MENU_DATA = [
     {
         id: "01",
-        name: 'Dashboard',
+        label: 'Dashboard',
         icon: LuLayoutDashboard,
         path: '/dashboard',
     },
     {
         id: "02",
-        name: 'Income',
+        label: 'Income',
         icon: LuWalletMinimal,
         path: '/income',
     },
     {
         id: "03",
-        name: 'Expense',
+        label: 'Expense',
         icon: LuHandCoins,
         path: '/expense',
     },
@@ -28,7 +28,7 @@ export const SIDE_MENU_DATA = [
 
     {
         id: "06",
-        name: 'Logout',
+        label: 'Logout',
         icon: LuLogOut,
         path: 'logout',
     },
