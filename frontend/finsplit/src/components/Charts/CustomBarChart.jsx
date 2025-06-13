@@ -1,10 +1,20 @@
 import React from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,Cell } from 'recharts';
-
-
+import { 
+    BarChart, 
+    Bar, 
+    XAxis, 
+    YAxis, 
+    CartesianGrid, 
+    Tooltip, 
+    Legend, 
+    ResponsiveContainer,
+    Cell 
+} from 'recharts';
 
 const CustomBarChart = ({ data }) => {
-    const getBarColor = (index) => { //funtion to alternate bar colors
+
+    // function to alternate bar colors
+    const getBarColor = (index) => { 
         return index % 2 === 0 ? '#875cf5' : '#cfbefb';
     };
 
