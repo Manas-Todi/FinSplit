@@ -16,7 +16,6 @@ export const getInitials = (name) => {    // Function to get initials from a ful
     return initials.toUpperCase();
 }
 
-
 export const addThousandsSeparator = (num) => {
     if(num==null || isNaN(num)) return "";
 
@@ -24,3 +23,12 @@ export const addThousandsSeparator = (num) => {
     const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     return fractionalPart ? `${formattedInteger}.${fractionalPart}` : formattedInteger;
 };
+
+export const prepareExpenseBarChartData = (data =[]) => {
+    const chartData= data.map((item) => ({
+        category: item?.category,
+        amount: item?.amount,
+    }));
+
+    return chartData
+}

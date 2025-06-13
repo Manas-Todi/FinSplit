@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoMdDocument } from 'react-icons/io';
 import moment from 'moment'
-import TransactionInfoCard from "../cards/TransactionInfoCard";
+import TransactionsInfoCard from "../cards/TransactionsInfoCard";
 import { LuArrowRight } from 'react-icons/lu';
 
 const RecentTransactions = ({transactions, onSeeMore}) => {
@@ -17,7 +17,7 @@ const RecentTransactions = ({transactions, onSeeMore}) => {
 
             <div className="mt-6">
                 {transactions?.slice(0,5)?.map((item) => (
-                    <TransactionInfoCard
+                    <TransactionsInfoCard
                         key={item._id}
                         title={item.type == 'expense' ? item.category : item.source}
                         icon={item.icon}

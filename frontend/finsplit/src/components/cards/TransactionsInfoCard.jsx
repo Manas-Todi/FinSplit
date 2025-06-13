@@ -6,7 +6,7 @@ import {
     LuTrash2,
 } from "react-icons/lu";
 
-const TransactionInfoCard = ({
+const TransactionsInfoCard = ({
     title,
     icon,
     date,
@@ -56,4 +56,4 @@ const TransactionInfoCard = ({
     );
 };
 
-export default TransactionInfoCard;
+export default TransactionsInfoCard;
