@@ -10,7 +10,7 @@ const ExpenseList = ({transactions, onDelete, onDownload}) => {
             <h5 className='text-lg'>ALL EXPENSES</h5>
 
             <button className='card-btn' onClick={onDownload}>
-                <LuDownload className='text-base' /> DOWNLOAD
+                <LuDownload className='text-base' /> Download
             </button>
         </div>
 

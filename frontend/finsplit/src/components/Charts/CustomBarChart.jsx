@@ -38,7 +38,7 @@ const CustomBarChart = ({ data }) => {
                 <BarChart data={data}>
                     <CartesianGrid stroke="none"/>
 
-                    <XAxis dataKey="month" tick={{ fontsize:12,fill:'#555'}} stroke="none" />
+                    <XAxis dataKey={data.length && data[0].month ? "month" : "category"} tick={{ fontSize:12, fill:'#555'}} stroke="none" />
                     <YAxis tick={{ fontsize:12,fill:'#555'}} stroke="none" />
                     <Tooltip content={CustomTooltip}/>
                     
