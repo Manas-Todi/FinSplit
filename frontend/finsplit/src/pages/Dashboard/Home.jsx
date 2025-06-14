@@ -37,7 +37,7 @@ const Home = () => {
       }
 
     } catch (error) {
-      console.log("Somehting went wrong. Please try again", error);
+      console.log("Something went wrong. Please try again", error);
     } finally {
       setLoading(false);
     }
@@ -45,7 +45,6 @@ const Home = () => {
 
   useEffect(() => {
     fetchDashboardData();
-    return () => {};
 
   }, []);
 
@@ -68,7 +67,7 @@ const Home = () => {
           <InfoCard
             icon={<LuHandCoins/>}
             label="Total Expense"
-            value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
+            value={addThousandsSeparator(dashboardData?.totalExpenses || 0)}
             color="bg-red-500"
           />
 

@@ -7,6 +7,8 @@ import axiosInstance from '../../utils/axiosInstance';
 import toast from 'react-hot-toast';
 import AddExpenseForm from '../../components/expense/AddExpenseForm';
 import Modal from '../../components/Modal';
+import ExpenseList from '../../components/expense/ExpenseList';
+import DeleteAlert from '../../components/DeleteAlert';
 
 const Expense = () => {
   useUserAuth();
@@ -57,6 +59,7 @@ const Expense = () => {
 
     if (!date){
       toast.error("Date is required.");
+      return;
     }
 
     try {
@@ -81,7 +84,6 @@ const Expense = () => {
   useEffect(() => {
     fetchExpenseDetails();
 
-    return () => {};
   }, []);
 
   // Delete Expense
@@ -101,7 +103,28 @@ const Expense = () => {
   };
 
   // Handle download expense details 
-  const handleDownloadExpenseDetails = async () => {};
+  const handleDownloadExpenseDetails = async () => {
+    try {
+      const response = await axiosInstance.get(
+        API_PATHS.EXPENSE.DOWNLOAD_EXPENSE, 
+        {
+          responseType: 'blob', // Important for downloading files
+        }
+      );
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'expense_details.xlsx'); // Set the file name
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(url); // Clean up
+    }
+    catch (error) {
+      console.error("Error downloading expense details:", error);
+      toast.error("Failed to download expense details. Please try again.");
+    }
+  };
   
   return (
     <DashboardLayout activeMenu="Expense">
@@ -134,11 +157,11 @@ const Expense = () => {
         <Modal
           isOpen={openDeleteAlert.show}
           onClose={() => setOpenDeleteAlert({ show: false, data: null})}
-          title="Delete Income"
+          title="Delete Expense"
         >
           <DeleteAlert
-            content="Are you sure you want to delete this income detail?"
-            onDelete={() => deleteIncome(openDeleteAlert.data)}
+            content="Are you sure you want to delete this expense detail?"
+            onDelete={() => deleteExpense(openDeleteAlert.data)}
           />
         </Modal>
       </div>
