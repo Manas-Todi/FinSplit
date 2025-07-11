@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { LuUser, LuUpload, LuTrash } from 'react-icons/lu';
+import { useRef, useState } from 'react';
+import { LuTrash, LuUpload, LuUser } from 'react-icons/lu';
 
 const ProfilePhotoSelector = ({image, setImage}) => {
     const inputRef= useRef(null);
@@ -36,12 +36,11 @@ const ProfilePhotoSelector = ({image, setImage}) => {
         />
 
         {!image ? (
-            <div className='w-20 h-20 flex items-center justify-center bg-purple-100 rounded-full relative'>
-                <LuUser className='text-4xl text-primary' />
-
+            <div className='w-20 h-20 flex items-center justify-center bg-green-100 rounded-full relative'>
+                <LuUser className='text-4xl text-green-600' />
                 <button
                     type='button'
-                    className='w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full absolute -bottom-1 -right-1'
+                    className='w-8 h-8 flex items-center justify-center bg-green-600 text-white rounded-full absolute -bottom-1 -right-1 hover:bg-green-700 transition'
                     onClick={onChooseFile}
                 >
                     <LuUpload />
@@ -56,7 +55,7 @@ const ProfilePhotoSelector = ({image, setImage}) => {
                 />
                 <button
                     type='button'
-                    className='w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1'
+                    className='w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1 hover:bg-red-600 transition'
                     onClick={handleRemoveImage}
                 >
                     <LuTrash />

@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from "../../components/Inputs/Input";
 import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector';
 import AuthLayout from '../../components/layouts/AuthLayout';
+import { UserContext } from '../../context/UserContext';
 import { API_PATHS } from '../../utils/apiPaths';
 import axiosInstance from '../../utils/axiosInstance';
 import { validateEmail } from '../../utils/helper';
 import uploadImage from '../../utils/uploadImage';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
 
 
 const SignUp = () => {
@@ -95,7 +94,7 @@ const SignUp = () => {
               value={fullName}
               onChange={({ target }) => setFullName(target.value)}
               label="Full Name"
-              placeholder="Saanp Bansal"
+              placeholder="Capuccino Asasino"
               type="text"
             />
 
@@ -103,7 +102,7 @@ const SignUp = () => {
               value={email}
               onChange={({ target }) => setEmail(target.value)}
               label="Email Address"
-              placeholder="maggu@iitk.ac.in"
+              placeholder="WelcomeUser@iitk.ac.in"
               type="text"
             />
             <div className='col-span-2'>
@@ -118,7 +117,10 @@ const SignUp = () => {
           </div>
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
 
-          <button type="submit" className="btn-primary">
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+          >
             SIGN UP
           </button>
 

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { SIDE_MENU_DATA } from '../../utils/data'
-import { UserContext } from '../../context/UserContext';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CharAvatar  from '../cards/CharAvatar';
+import { UserContext } from '../../context/UserContext';
+import { SIDE_MENU_DATA } from '../../utils/data';
+import CharAvatar from '../cards/CharAvatar';
 
 const SideMenu = ({activeMenu}) => {
   const {user, clearUser} = useContext(UserContext);
@@ -48,7 +48,7 @@ const SideMenu = ({activeMenu}) => {
       {SIDE_MENU_DATA.map((item, index) => (
         <button 
         key={`menu_${index}`}
-        className={`flex items-center gap-4 w-full text-[15px] ${activeMenu === item.label ? "text-white bg-primary" :""} py-3 px-6 rounded-lg mb-3`}
+        className={`flex items-center gap-4 w-full text-[15px] ${activeMenu === item.label ? "text-white bg-green-600" :""} py-3 px-6 rounded-lg mb-3`}
         onClick={() => handleClick(item.path)}
         >
 

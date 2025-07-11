@@ -56,7 +56,7 @@ const Home = () => {
             icon={<IoMdCard />}
             label="Total Balance"
             value={addThousandsSeparator(dashboardData?.totalBalance || 0)}
-            color="bg-primary"
+            color="bg-green-600" // changed from bg-primary
           />
           <InfoCard
             icon={<LuWalletMinimal />}

@@ -1,28 +1,26 @@
-import React from 'react'
-import { 
-    BarChart, 
-    Bar, 
-    XAxis, 
-    YAxis, 
-    CartesianGrid, 
-    Tooltip, 
-    Legend, 
+import {
+    Bar,
+    BarChart,
+    CartesianGrid,
+    Cell,
     ResponsiveContainer,
-    Cell 
+    Tooltip,
+    XAxis,
+    YAxis
 } from 'recharts';
 
 const CustomBarChart = ({ data }) => {
 
     // function to alternate bar colors
     const getBarColor = (index) => { 
-        return index % 2 === 0 ? '#875cf5' : '#cfbefb';
+        return index % 2 === 0 ? '#a1a1aa' : '#f4f4f5'; // zinc-400 and zinc-100
     };
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
                 <div className="bg-white p-2 rounded-lg shadow-md border border-gray-300">      
-                    <p className="text-xs font-semibold text-purple-800 mb-1">{payload[0].payload.category}</p>
+                    <p className="text-xs font-semibold text-gray-700 mb-1">{payload[0].payload.category}</p>
                     <p className="text-sm text-gray-600">
                         Amount: <span className="text-sm font-medium text-gray-900">&#8377;{payload[0].payload.amount}</span>
                     </p>
@@ -44,10 +42,8 @@ const CustomBarChart = ({ data }) => {
                     
                     <Bar 
                         dataKey="amount" 
-                        fill="#FF8042"
+                        fill="#a1a1aa"
                         radius={[10, 10, 0, 0]}
-                        activeDot={{ r: 8, fill: 'yellow' }}
-                        activeStyle={{ fill: 'green'}}
                     >
                         {data.map((entry, index) => (
                             <Cell key={index} fill={getBarColor(index)} />
